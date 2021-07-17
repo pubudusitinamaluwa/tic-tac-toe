@@ -1,0 +1,7 @@
+.board {
+    background: rgb(226, 223, 223);
+    border: 1px solid #999;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+  }

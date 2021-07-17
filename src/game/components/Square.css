@@ -1,0 +1,15 @@
+.square {
+    background: rgb(226, 223, 223);
+    border: 3px solid #1b263a;
+    float: left;
+    font-size: 100px;
+    font-family: Comic Sans MS;
+    color: rgb(87, 84, 84);
+    line-height: 150px;
+    height: 150px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 150px;
+  }
