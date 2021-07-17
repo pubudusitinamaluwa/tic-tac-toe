@@ -1,9 +1,22 @@
 .board {
     background: rgb(226, 223, 223);
+    min-width: 470px;
     border: 1px solid #999;
     margin-right: -1px;
     margin-top: -1px;
-    padding: 0;
+    padding-left: -10px;
+}
+
+.board_container {
+    min-height: 450px;
+    min-width: 470px;
+    padding-left: 20px;
+}
+
+.board_row {
+    line-height: 150px;
+    min-height: 150px;
+    min-width: 470px;
 }
 
 .info {
@@ -15,7 +28,7 @@
 
 .status {
     float: right;
-    margin-right: 2px;
+    margin-right: 25px;
 }
 
 .session_id {

@@ -62,7 +62,7 @@ class Board extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="board_container">
                 <div className="info">
                     <div className="session_id">Session: {this.state.sessionId}</div>
                     <div className="status" id={this.state.gameBoard.gameStatus}>
@@ -87,7 +87,7 @@ class Board extends React.Component {
                     </div>
                 </div>
                 <div className="updates">
-                    {this.state.gameBoard.message? this.state.gameBoard.message : null}
+                    {this.state.gameBoard.message ? this.state.gameBoard.message : null}
                 </div>
             </div>
         );
