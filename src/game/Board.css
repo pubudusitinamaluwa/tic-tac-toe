@@ -26,6 +26,13 @@
     margin-left: 2px;
 }
 
+.updates {
+    float: left;
+    color: rgb(132, 191, 240);
+    font-size: 18px;
+    margin-top: 10px;
+}
+
 #ACTIVE {
     color: rgb(24, 207, 18)
 }

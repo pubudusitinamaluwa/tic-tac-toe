@@ -24,9 +24,13 @@ class Board extends React.Component {
     componentDidMount() {
         const sessionId = this.state.sessionId;
         if (sessionId !== null) {
-            sessionAPI.getSession(sessionId).then(response => this.setState(response))
+            sessionAPI.getSession(sessionId)
+                .then(response => this.setState(response))
+                .catch(error => console.log(error.response));
         } else {
-            sessionAPI.createSession().then(response => this.setState(response))
+            sessionAPI.createSession()
+                .then(response => this.setState(response))
+                .catch(error => console.log(error.response));
         }
     }
 
@@ -37,19 +41,23 @@ class Board extends React.Component {
             index: boxIndex
         };
         gameAPI.strike(payload).then(response => {
-            console.log("RESPONSE");
-            console.log(response.board);
-            if (response.success) {
-            } else {
-                console.log("********* FAILED")
-            }
             this.setState({
-                lastActiveTs: new Date().getMilliseconds(),
+                lastActiveTs: new Date().getTime(),
                 gameBoard: response
             })
+        }).catch(error => {
+            const statusCode = error.response.status
+            const msg = error.response.data.message;
+            if (statusCode === 409) {
+                // ToDo : Better popup
+                if (!alert(`Game Over.\n${msg}\nStart new game?`)) {
+                    window.location.reload();
+                }
+            } else {
+                // ToDo : Better popup
+                alert(msg)
+            }
         });
-        console.log("STATE");
-        console.log(this.state.gameBoard.board);
     }
 
     render() {
@@ -58,7 +66,7 @@ class Board extends React.Component {
                 <div className="info">
                     <div className="session_id">Session: {this.state.sessionId}</div>
                     <div className="status" id={this.state.gameBoard.gameStatus}>
-                        {this.state.gameBoard.gameStatus === "WIN" ? `Game won by: ${this.state.gameBoard.winner}`:this.state.gameBoard.gameStatus}
+                        {this.state.gameBoard.gameStatus === "WIN" ? `Game won by: ${this.state.gameBoard.winner}` : this.state.gameBoard.gameStatus}
                     </div>
                 </div>
                 <div className="Board">
@@ -77,6 +85,9 @@ class Board extends React.Component {
                         <Square index={7} value={this.state.gameBoard.board[7]} handleClick={this.handleClick}></Square>
                         <Square index={8} value={this.state.gameBoard.board[8]} handleClick={this.handleClick}></Square>
                     </div>
+                </div>
+                <div className="updates">
+                    {this.state.gameBoard.message? this.state.gameBoard.message : null}
                 </div>
             </div>
         );
