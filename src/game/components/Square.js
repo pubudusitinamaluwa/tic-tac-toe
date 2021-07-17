@@ -1,12 +1,14 @@
 import React from 'react';
 import './Square.css'
 
-const Square = ({index, board, handleClick}) => {
-    return (
-        <button className="square" key={`sq-${index}`} onClick={()=>{handleClick(index)}}>
-            {board ? board[index] : null}
-        </button>
-    );
+class Square extends React.Component {
+    render() {
+        return (
+            <button className="square" key={`sq-${this.props.index}`} value={this.props.index} onClick={event => {console.log(this.props);this.props.handleClick(event.target.value)}}>
+                {this.props.value ? this.props.value : null}
+            </button>
+        );
+    }
 }
 
 export default Square;
