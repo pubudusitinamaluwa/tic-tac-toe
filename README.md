@@ -43,8 +43,9 @@ docker container run -d --rm --name tic-tac-toe -p 3000:3000 tic-tac-toe:latest
 ### Backend
 Please follow the build & run steps in this repo [tic-tac-toe-api](https://github.com/pubudusitinamaluwa/tic-tac-toe-api)
 
-#Screen shots
+# Screenshots
 
+---
 ![Image](images/03.png)
 ![Image](images/02.png)
 ![Image](images/05.png)
